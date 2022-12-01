@@ -16,7 +16,7 @@ stages{
 
             docker {
 
-                image: 'maven'
+                image 'maven'
             }
 
         }
