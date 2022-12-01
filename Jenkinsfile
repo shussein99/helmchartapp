@@ -14,7 +14,7 @@ stages{
 
         agent{
 
-            docker{
+            docker {
 
                 image: 'maven'
             }
