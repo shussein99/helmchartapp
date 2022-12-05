@@ -72,7 +72,9 @@ stages{
             
            script{
                  dir('kubernetes/myapp/'){
-                  sh 'sudo helm datree test .'
+                    withEnv(['DATREE_TOKEN=ed4c6ff1-fadd-45ad-b6b1-7337dfa087dc']) {
+                         sh 'sudo helm datree test .'
+                               }
                        }
                 }           
              } 
