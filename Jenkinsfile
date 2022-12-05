@@ -55,15 +55,27 @@ stages{
            script{
                   withCredentials([string(credentialsId: 'nexus_pass', variable: 'nexus_cred')]) {
                   sh '''
-                     docker build -t 18.217.70.38:8083/springapp:${VERSION} .
-                     docker login -u admin -p $nexus_cred 18.217.70.38:8083
-                     docker push 18.217.70.38:8083/springapp:${VERSION}
-                     docker rmi 18.217.70.38:8083/springapp:${VERSION}
+                     docker build -t 3.144.143.118:8083/springapp:${VERSION} .
+                     docker login -u admin -p $nexus_cred 3.144.143.118:8083
+                     docker push 3.144.143.118:8083/springapp:${VERSION}
+                     docker rmi 3.144.143.118:8083/springapp:${VERSION}
 
                   '''
                        }
                 }           
              } 
-        }     
+        }   
+
+     stage('Identifying misconfig using datree in helm charts '){
+       
+        steps{
+            
+           script{
+                 dir('kubernetes/myapp/'){
+                  sh 'helm datree test .'
+                       }
+                }           
+             } 
+        }          
      }    
 }
