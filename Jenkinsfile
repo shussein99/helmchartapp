@@ -72,7 +72,7 @@ stages{
             
            script{
                  dir('kubernetes/myapp/'){
-                  sh 'sudo helm datree test .'
+                  sh 'helm datree test .'
                        }
                 }           
              } 
